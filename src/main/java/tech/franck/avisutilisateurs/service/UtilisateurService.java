@@ -29,7 +29,7 @@ public class UtilisateurService {
 
         // Methode pour attribuer un role au User
         Role roleUtilisateur = new Role();
-        roleUtilisateur.setLibelle(TypeDeRole.UTILSATEUR);
+        roleUtilisateur.setLibelle(TypeDeRole.UTILISATEUR);
         utilisateur.setRole(roleUtilisateur);
 
 
