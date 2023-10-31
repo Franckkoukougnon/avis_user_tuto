@@ -1,0 +1,36 @@
+version: '3.1'
+
+services:
+
+  db:
+    container_name: mariadb-franck
+    image: mariadb
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: example
+    ports:
+      - "3308:3306"  # Correction : Utilisation de guillemets doubles pour les ports
+
+  adminer:
+    container_name: adminer-franck
+    image: adminer
+    restart: always
+    ports:
+      - "9080:8080"  # Correction : Utilisation de guillemets doubles pour les ports
+
+  smtp4dev:
+    image: rnwood/smtp4dev:v3
+    restart: always
+    ports:
+      - "9081:80"
+      - "9025:25"
+
+    volumes:
+      - smtp4dev-data:/smtp4dev  # Correction : Ajout de deux points pour le volume
+    environment:
+      # Uncomment to customize these settings
+      #- ServerOptions__BasePath=/smtp4dev
+      - ServerOptions__HostName=smtp4dev
+
+volumes:
+  smtp4dev-data:  # Définition du volume smtp4dev-data
